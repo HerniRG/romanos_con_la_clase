@@ -13,7 +13,7 @@ Este programa en Python permite convertir números romanos a arábigos y vicever
 1. Clona el repositorio:
 
    ```bash
-   git clone https://github.com/tu_usuario/tu_repositorio.git
+   git clone https://github.com/HerniRG/romanos_con_la_clase.git
    cd tu_repositorio
 
 2. Ejecuta el programa:
