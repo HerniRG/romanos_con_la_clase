@@ -55,6 +55,7 @@ def to_roman(n):
         result = valors[5] + (n - 5) * valors[1]
     elif n == 9:
         result = valors[1] + valors[10]
+
     elif n <= 30:
         result = n//10 * valors[10]
     elif n == 40:
@@ -63,6 +64,7 @@ def to_roman(n):
         result = valors[50] +  (n - 50) // 10 * valors[10]
     elif n == 90: 
         result = valors[10] + valors[100]
+
     elif n <= 300:
         result = n // 100 * valors[100]
     elif n == 400:
@@ -71,11 +73,28 @@ def to_roman(n):
         result = valors[500] + (n - 500) // 100 * valors[100]
     elif n == 900:
         result = valors[100] + valors[1000]
+
     elif n <= 3000:
         result = n // 1000 * valors[1000]
     else:
         result = valors[n]
         
+
+    return result
+
+
+def to_roman2(n):   
+    primer_digito = int(str(n)[0])
+    orden = n / primer_digito
+
+    if primer_digito <= 3:
+        result = primer_digito * valors[orden]
+    elif primer_digito == 4:
+        result = valors[orden] + valors[5 * orden]
+    elif primer_digito < 9:
+        result = valors[5 * orden] + (primer_digito - 5) * valors[orden]
+    elif primer_digito == 9:
+        result = valors[orden] + valors[10 * orden]
 
     return result
 
@@ -117,4 +136,22 @@ def arabigo_a_romano(n: int):
 #             roman += value
 #             arab -= key
 #     return roman
-            
+
+
+def to_roman2(n):   
+    primer_digito = int(str(n)[0])
+    orden = n / primer_digito
+
+    if primer_digito <= 3:
+        result = primer_digito * valors[orden]
+    elif primer_digito == 4:
+        result = valors[orden] + valors[5 * orden]
+    elif primer_digito < 9:
+        result = valors[5 * orden] + (primer_digito - 5) * valors[orden]
+    elif primer_digito == 9:
+        result = valors[orden] + valors[10 * orden]
+
+    return result
+
+
+print(to_roman2(800))

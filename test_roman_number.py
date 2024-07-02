@@ -1,4 +1,4 @@
-from roman_funcs import to_roman_9_or_more, dividir_en_digitos, arabigo_a_romano
+from roman_funcs import to_roman_9_or_more, dividir_en_digitos, arabigo_a_romano, to_roman2
 
 
 def test_romanos_simples():
@@ -24,7 +24,6 @@ def test_romanos_complejos():
     assert to_roman_9_or_more(890) == "DCCCXC"
     assert to_roman_9_or_more(999) == "CMXCIX"
 
-from roman_funcs import to_roman_9_or_more
 
 def test_romanos_simples():
     assert to_roman_9_or_more(1) == 'I'
@@ -66,3 +65,17 @@ def test_dividir_en_digitos():
 
 def test_cualquier_romano():
     assert arabigo_a_romano(1999) == "MCMXCIX"
+
+def test_to_roman2():
+    assert to_roman2(1) == 'I'
+    assert to_roman2(4) == 'IV'
+    assert to_roman2(9) == 'IX'
+    assert to_roman2(21) == 'XXI'
+    assert to_roman2(42) == 'XLII'
+    assert to_roman2(44) == 'XLIV'
+    assert to_roman2(78) == 'LXXVIII'
+    assert to_roman2(99) == 'XCIX'
+    assert to_roman2(125) == 'CXXV'
+    assert to_roman2(444) == 'CDXLIV'
+    assert to_roman2(890) == 'DCCCXC'
+    assert to_roman2(999) == 'CMXCIX'
