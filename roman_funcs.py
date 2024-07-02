@@ -13,21 +13,13 @@ roman_to_arabic = {
 
 arabic_to_roman = {
     10000: 'X•',
-    9000: 'MX•',
     5000: 'V•',
-    4000: 'IV•',
     1000: 'M',
-    900: 'CM',
     500: 'D',
-    400: 'CD',
     100: 'C',
-    90: 'XC',
     50: 'L',
-    40: 'XL',
     10: 'X',
-    9: 'IX',
     5: 'V',
-    4: 'IV',
     1: 'I'
 }
 
@@ -53,7 +45,7 @@ def to_roman_9_or_more(n):
 
     return result
 
-to_roman_9_or_more(890)
+print(to_roman_9_or_more(12294))
 
 # def to_roman(n):
 #     arab = n
