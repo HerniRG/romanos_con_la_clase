@@ -11,7 +11,7 @@ roman_to_arabic = {
     'X•': 10000
 }
 
-arabic_to_roman = {
+valors = {
     10000: 'X•',
     5000: 'V•',
     1000: 'M',
@@ -33,19 +33,81 @@ def to_roman_9_or_more(n):
         
         
         if digit <= 3:
-            result += digit * arabic_to_roman[multiplicador]
+            result += digit * valors[multiplicador]
         elif digit == 4:
-            result += arabic_to_roman[multiplicador] + arabic_to_roman[5 * multiplicador]
+            result += valors[multiplicador] + valors[5 * multiplicador]
         elif digit < 9:
-            result += arabic_to_roman[5 * multiplicador] + (digit - 5) * arabic_to_roman[multiplicador]
+            result += valors[5 * multiplicador] + (digit - 5) * valors[multiplicador]
         elif digit == 9:
-            result += arabic_to_roman[multiplicador] + arabic_to_roman[10 * multiplicador]
+            result += valors[multiplicador] + valors[10 * multiplicador]
         
         multiplicador = multiplicador // 10 # Reduce el multiplicador 100 // 10 = 10
 
     return result
 
-print(to_roman_9_or_more(12294))
+def to_roman(n):
+    
+    if n <= 3:
+        result = n * valors[1]
+    elif n == 4:
+        result = valors[1] + valors[5]
+    elif n < 9:
+        result = valors[5] + (n - 5) * valors[1]
+    elif n == 9:
+        result = valors[1] + valors[10]
+    elif n <= 30:
+        result = n//10 * valors[10]
+    elif n == 40:
+        result = valors[10] + valors[50]
+    elif n < 90:
+        result = valors[50] +  (n - 50) // 10 * valors[10]
+    elif n == 90: 
+        result = valors[10] + valors[100]
+    elif n <= 300:
+        result = n // 100 * valors[100]
+    elif n == 400:
+        result = valors[100] + valors[500]
+    elif n < 900:
+        result = valors[500] + (n - 500) // 100 * valors[100]
+    elif n == 900:
+        result = valors[100] + valors[1000]
+    elif n <= 3000:
+        result = n // 1000 * valors[1000]
+    else:
+        result = valors[n]
+        
+
+    return result
+
+
+def dividir_en_digitos(n: int):
+    n_string = str(n)  
+    digitos = []          
+    for caracter in n_string:
+        digitos.append(int(caracter)) 
+
+    while len(digitos) < 4:
+        digitos.insert(0,0)
+
+    resultado = [digitos[0] * 1000, digitos[1] * 100, digitos[2] * 10, digitos[3] * 1]
+
+    print(resultado)
+
+    return resultado
+
+print(dividir_en_digitos(12))
+
+
+def digitos_a_roman(lista):
+    result = ""
+    for numero in lista:
+        result += to_roman(numero)
+    return result
+
+
+def arabigo_a_romano(n: int):
+    lista = dividir_en_digitos(n)
+    return digitos_a_roman(lista)
 
 # def to_roman(n):
 #     arab = n
