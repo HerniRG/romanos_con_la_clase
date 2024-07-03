@@ -49,6 +49,27 @@ def to_roman2(n):
 
     return result
 
+def divide_en_miles(n: int):
+   
+    lista = []
+    modulo = n % 1000
+    paluego = n // 1000
+    
+    while paluego >= 1000:
+        lista.append(modulo)
+        n = paluego
+        modulo = n % 1000
+        paluego = n // 1000
+    
+    if paluego <= 3:
+        lista.append(n)
+    else:
+        lista.append(modulo)
+        lista.append(paluego)
+    
+    return lista
+    
+
 def dividir_en_digitos(n: int):
     """
     Divide un número entero en sus dígitos y los multiplica por su valor posicional.
@@ -111,5 +132,13 @@ def arabigo_a_romano(n: int):
     arabigo_a_romano(4321)
     'MV•CCCXXI'
     """
-    lista = dividir_en_digitos(n)
-    return digitos_a_roman(lista)
+    lista = divide_en_miles(n)
+    romano_miles = ""
+    
+    for indice, miles in enumerate(lista):
+        lista_miles = dividir_en_digitos(miles)
+        romano_miles = digitos_a_roman(lista_miles) + (indice * "•") + romano_miles
+
+    return romano_miles
+
+print(arabigo_a_romano(4127))
