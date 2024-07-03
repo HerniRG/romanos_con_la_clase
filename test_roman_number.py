@@ -79,3 +79,11 @@ def test_to_roman2():
     assert to_roman2(1) == 'I'
     assert to_roman2(5) == 'V'
     assert to_roman2(6) == 'VI'
+
+
+
+
+
+assert dividir_en_digitos(34) == [30, 4]
+assert dividir_en_digitos(2024) == [2000, 0, 20, 4]
+assert dividir_en_digitos(100) == [100, 0, 0]
