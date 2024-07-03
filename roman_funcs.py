@@ -9,6 +9,10 @@ def digito_orden(n: int):
     
     Retorna:
     tuple: Una tupla con el primer dígito y su orden.
+    
+    Ejemplo:
+    digito_orden(4321)
+    (4, 1000)
     """
     primer_digito = int(str(n)[0])
     orden = 10 ** (len(str(n)) - 1)
@@ -23,6 +27,10 @@ def to_roman2(n):
     
     Retorna:
     str: Representación romana del número.
+    
+    Ejemplo:
+    to_roman2(4000)
+    'MV•'
     """
     if n == 0:
         return ""
@@ -49,16 +57,23 @@ def dividir_en_digitos(n: int):
     
     Retorna:
     List[int]: Lista de los dígitos multiplicados por su valor posicional.
+    
+    Ejemplo:
+    dividir_en_digitos(4321)
+    [4000, 300, 20, 1]
     """
     n_string = str(n)
+    longitud = len(n_string)
     digitos = []
+
     for caracter in n_string:
         digitos.append(int(caracter))
     
-    while len(digitos) < 4:
-        digitos.insert(0, 0)
-        
-    resultado = [digitos[0] * 1000, digitos[1] * 100, digitos[2] * 10, digitos[3] * 1]
+    resultado = []
+    for i, digito in enumerate(digitos):
+        orden = 10 ** (longitud - i - 1)
+        resultado.append(digito * orden)
+    
     print(resultado)
     return resultado
 
@@ -71,6 +86,10 @@ def digitos_a_roman(lista):
     
     Retorna:
     str: Representación romana concatenada de los números.
+    
+    Ejemplo:
+    digitos_a_roman([4000, 300, 20, 1])
+    'MV•CCCXXI'
     """
     result = ""
     for numero in lista:
@@ -86,6 +105,10 @@ def arabigo_a_romano(n: int):
     
     Retorna:
     str: Representación romana del número.
+    
+    Ejemplo:
+    arabigo_a_romano(4321)
+    'MV•CCCXXI'
     """
     lista = dividir_en_digitos(n)
     return digitos_a_roman(lista)

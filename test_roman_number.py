@@ -23,7 +23,15 @@ def test_romanos_complejos():
     assert arabigo_a_romano(444) == "CDXLIV"
     assert arabigo_a_romano(890) == "DCCCXC"
     assert arabigo_a_romano(999) == "CMXCIX"
-
+    assert arabigo_a_romano(1000) == "M"
+    assert arabigo_a_romano(1987) == "MCMLXXXVII"
+    assert arabigo_a_romano(2021) == "MMXXI"
+    assert arabigo_a_romano(3999) == "MMMCMXCIX"
+    assert arabigo_a_romano(4000) == "MV•"
+    assert arabigo_a_romano(5000) == "V•"
+    assert arabigo_a_romano(6000) == "V•M"
+    assert arabigo_a_romano(9000) == "MX•"
+    assert arabigo_a_romano(10000) == "X•"
 
 
 def test_romanos_1_al_9():
@@ -50,10 +58,10 @@ def test_romanos_10_al_90():
 
 
 def test_dividir_en_digitos():
-    assert dividir_en_digitos(34) == [0, 0, 30, 4]
+    assert dividir_en_digitos(34) == [30, 4]
     
     assert dividir_en_digitos(2024) == [2000, 0, 20, 4]
-    assert dividir_en_digitos(100) == [0, 100, 0, 0]
+    assert dividir_en_digitos(100) == [100, 0, 0]
 
 def test_cualquier_romano():
     assert arabigo_a_romano(1999) == "MCMXCIX"
