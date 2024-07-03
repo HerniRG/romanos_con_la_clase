@@ -1,60 +1,52 @@
-from roman_funcs import to_roman_9_or_more, dividir_en_digitos, arabigo_a_romano, to_roman2
+from roman_funcs import dividir_en_digitos, arabigo_a_romano, to_roman2
 
 
 def test_romanos_simples():
-    assert to_roman_9_or_more(1) == "I"
-    assert to_roman_9_or_more(5) == "V"
-    assert to_roman_9_or_more(10) == "X"
-    assert to_roman_9_or_more(50) == "L"
-    assert to_roman_9_or_more(100) == "C"
-    assert to_roman_9_or_more(500) == "D"
-    assert to_roman_9_or_more(1000) == "M"
+    assert to_roman2(1) == "I"
+    assert to_roman2(5) == "V"
+    assert to_roman2(10) == "X"
+    assert to_roman2(50) == "L"
+    assert to_roman2(100) == "C"
+    assert to_roman2(500) == "D"
+    assert to_roman2(1000) == "M"
 
 def test_romanos_complejos():
-    assert to_roman_9_or_more(4) == "IV"
-    assert to_roman_9_or_more(6) == "VI"
-    assert to_roman_9_or_more(9) == "IX"
-    assert to_roman_9_or_more(21) == "XXI"
-    assert to_roman_9_or_more(42) == "XLII"
-    assert to_roman_9_or_more(44) == "XLIV"
-    assert to_roman_9_or_more(78) == "LXXVIII"
-    assert to_roman_9_or_more(99) == "XCIX"
-    assert to_roman_9_or_more(125) == "CXXV"
-    assert to_roman_9_or_more(444) == "CDXLIV"
-    assert to_roman_9_or_more(890) == "DCCCXC"
-    assert to_roman_9_or_more(999) == "CMXCIX"
+    assert arabigo_a_romano(4) == "IV"
+    assert arabigo_a_romano(6) == "VI"
+    assert arabigo_a_romano(9) == "IX"
+    assert arabigo_a_romano(21) == "XXI"
+    assert arabigo_a_romano(42) == "XLII"
+    assert arabigo_a_romano(44) == "XLIV"
+    assert arabigo_a_romano(78) == "LXXVIII"
+    assert arabigo_a_romano(99) == "XCIX"
+    assert arabigo_a_romano(125) == "CXXV"
+    assert arabigo_a_romano(444) == "CDXLIV"
+    assert arabigo_a_romano(890) == "DCCCXC"
+    assert arabigo_a_romano(999) == "CMXCIX"
 
 
-def test_romanos_simples():
-    assert to_roman_9_or_more(1) == 'I'
-    assert to_roman_9_or_more(5) == 'V'
-    assert to_roman_9_or_more(10) == 'X'
-    assert to_roman_9_or_more(50) == 'L'
-    assert to_roman_9_or_more(100) == 'C'
-    assert to_roman_9_or_more(500) == 'D'
-    assert to_roman_9_or_more(1000) == 'M'
 
 def test_romanos_1_al_9():
-    assert to_roman_9_or_more(1) == 'I'
-    assert to_roman_9_or_more(2) == 'II'
-    assert to_roman_9_or_more(3) == 'III'
-    assert to_roman_9_or_more(4) == 'IV'
-    assert to_roman_9_or_more(5) == 'V'
-    assert to_roman_9_or_more(6) == "VI"
-    assert to_roman_9_or_more(7) == 'VII'
-    assert to_roman_9_or_more(8) == 'VIII'
-    assert to_roman_9_or_more(9) == 'IX'
+    assert to_roman2(1) == 'I'
+    assert to_roman2(2) == 'II'
+    assert to_roman2(3) == 'III'
+    assert to_roman2(4) == 'IV'
+    assert to_roman2(5) == 'V'
+    assert to_roman2(6) == "VI"
+    assert to_roman2(7) == 'VII'
+    assert to_roman2(8) == 'VIII'
+    assert to_roman2(9) == 'IX'
 
 def test_romanos_10_al_90():
-    assert to_roman_9_or_more(10) == 'X'
-    assert to_roman_9_or_more(20) == 'XX'
-    assert to_roman_9_or_more(30) == 'XXX'
-    assert to_roman_9_or_more(40) == 'XL'
-    assert to_roman_9_or_more(50) == 'L'
-    assert to_roman_9_or_more(60) == "LX"
-    assert to_roman_9_or_more(70) == 'LXX'
-    assert to_roman_9_or_more(80) == 'LXXX'
-    assert to_roman_9_or_more(90) == 'XC'
+    assert to_roman2(10) == 'X'
+    assert to_roman2(20) == 'XX'
+    assert to_roman2(30) == 'XXX'
+    assert to_roman2(40) == 'XL'
+    assert to_roman2(50) == 'L'
+    assert to_roman2(60) == "LX"
+    assert to_roman2(70) == 'LXX'
+    assert to_roman2(80) == 'LXXX'
+    assert to_roman2(90) == 'XC'
 
 
 def test_dividir_en_digitos():
@@ -67,15 +59,15 @@ def test_cualquier_romano():
     assert arabigo_a_romano(1999) == "MCMXCIX"
 
 def test_to_roman2():
+    assert to_roman2(10) == 'X'
+    assert to_roman2(40) == 'XL'
+    assert to_roman2(90) == 'XC'
+    assert to_roman2(20) == 'XX'
+    assert to_roman2(400) == 'CD'
+    assert to_roman2(500) == 'D'
+    assert to_roman2(600) == 'DC'
+    assert to_roman2(900) == 'CM'
+    assert to_roman2(1000) == 'M'
     assert to_roman2(1) == 'I'
-    assert to_roman2(4) == 'IV'
-    assert to_roman2(9) == 'IX'
-    assert to_roman2(21) == 'XXI'
-    assert to_roman2(42) == 'XLII'
-    assert to_roman2(44) == 'XLIV'
-    assert to_roman2(78) == 'LXXVIII'
-    assert to_roman2(99) == 'XCIX'
-    assert to_roman2(125) == 'CXXV'
-    assert to_roman2(444) == 'CDXLIV'
-    assert to_roman2(890) == 'DCCCXC'
-    assert to_roman2(999) == 'CMXCIX'
+    assert to_roman2(5) == 'V'
+    assert to_roman2(6) == 'VI'

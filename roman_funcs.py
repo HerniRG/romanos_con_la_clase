@@ -1,91 +1,33 @@
+from diccionarios_romanos import valors, roman_to_arabic
 
-roman_to_arabic = {
-    'I': 1,
-    'V': 5,
-    'X': 10,
-    'L': 50,
-    'C': 100,
-    'D': 500,
-    'M': 1000,
-    'V•': 5000,
-    'X•': 10000
-}
-
-valors = {
-    10000: 'X•',
-    5000: 'V•',
-    1000: 'M',
-    500: 'D',
-    100: 'C',
-    50: 'L',
-    10: 'X',
-    5: 'V',
-    1: 'I'
-}
-
-def to_roman_9_or_more(n):
-    result = "" 
-    multiplicador = 10 ** (len(str(n)) - 1)  # si n es 850, len seria 3, 3-1 = 2, 10 * 10 = 100
+def digito_orden(n: int):
+    """
+    Determina el primer dígito de un número y su orden.
     
-    while n > 0:  # Bucle para procesar cada dígito del número
-        digit = n // multiplicador  # Obtiene el dígito más grande 850 // 100 = 8
-        n = n % multiplicador  # Actualiza el número eliminando más grande 850 % 100 = 50
-        
-        
-        if digit <= 3:
-            result += digit * valors[multiplicador]
-        elif digit == 4:
-            result += valors[multiplicador] + valors[5 * multiplicador]
-        elif digit < 9:
-            result += valors[5 * multiplicador] + (digit - 5) * valors[multiplicador]
-        elif digit == 9:
-            result += valors[multiplicador] + valors[10 * multiplicador]
-        
-        multiplicador = multiplicador // 10 # Reduce el multiplicador 100 // 10 = 10
-
-    return result
-
-def to_roman(n):
+    Parámetros:
+    n (int): El número a analizar.
     
-    if n <= 3:
-        result = n * valors[1]
-    elif n == 4:
-        result = valors[1] + valors[5]
-    elif n < 9:
-        result = valors[5] + (n - 5) * valors[1]
-    elif n == 9:
-        result = valors[1] + valors[10]
-
-    elif n <= 30:
-        result = n//10 * valors[10]
-    elif n == 40:
-        result = valors[10] + valors[50]
-    elif n < 90:
-        result = valors[50] +  (n - 50) // 10 * valors[10]
-    elif n == 90: 
-        result = valors[10] + valors[100]
-
-    elif n <= 300:
-        result = n // 100 * valors[100]
-    elif n == 400:
-        result = valors[100] + valors[500]
-    elif n < 900:
-        result = valors[500] + (n - 500) // 100 * valors[100]
-    elif n == 900:
-        result = valors[100] + valors[1000]
-
-    elif n <= 3000:
-        result = n // 1000 * valors[1000]
-    else:
-        result = valors[n]
-        
-
-    return result
-
+    Retorna:
+    tuple: Una tupla con el primer dígito y su orden.
+    """
+    primer_digito = int(str(n)[0])
+    orden = 10 ** (len(str(n)) - 1)
+    return (primer_digito, orden)
 
 def to_roman2(n):   
-    primer_digito = int(str(n)[0])
-    orden = n / primer_digito
+    """
+    Convierte un número individual en su representación romana teniendo en cuenta su orden.
+    
+    Parámetros:
+    n (int): El número a convertir.
+    
+    Retorna:
+    str: Representación romana del número.
+    """
+    if n == 0:
+        return ""
+    
+    primer_digito, orden = digito_orden(n)
 
     if primer_digito <= 3:
         result = primer_digito * valors[orden]
@@ -97,61 +39,53 @@ def to_roman2(n):
         result = valors[orden] + valors[10 * orden]
 
     return result
-
 
 def dividir_en_digitos(n: int):
-    n_string = str(n)  
-    digitos = []          
+    """
+    Divide un número entero en sus dígitos y los multiplica por su valor posicional.
+    
+    Parámetros:
+    n (int): El número a dividir.
+    
+    Retorna:
+    List[int]: Lista de los dígitos multiplicados por su valor posicional.
+    """
+    n_string = str(n)
+    digitos = []
     for caracter in n_string:
-        digitos.append(int(caracter)) 
-
+        digitos.append(int(caracter))
+    
     while len(digitos) < 4:
-        digitos.insert(0,0)
-
+        digitos.insert(0, 0)
+        
     resultado = [digitos[0] * 1000, digitos[1] * 100, digitos[2] * 10, digitos[3] * 1]
-
     print(resultado)
-
     return resultado
 
-print(dividir_en_digitos(12))
-
-
 def digitos_a_roman(lista):
+    """
+    Convierte una lista de números en su representación romana.
+    
+    Parámetros:
+    lista (List[int]): Lista de números a convertir.
+    
+    Retorna:
+    str: Representación romana concatenada de los números.
+    """
     result = ""
     for numero in lista:
-        result += to_roman(numero)
+        result += to_roman2(numero)
     return result
-
 
 def arabigo_a_romano(n: int):
+    """
+    Convierte un número arábigo en su representación romana.
+    
+    Parámetros:
+    n (int): El número arábigo a convertir.
+    
+    Retorna:
+    str: Representación romana del número.
+    """
     lista = dividir_en_digitos(n)
     return digitos_a_roman(lista)
-
-# def to_roman(n):
-#     arab = n
-#     roman = ""
-#     for key, value in arabic_to_roman.items():
-#         while arab >= key:
-#             roman += value
-#             arab -= key
-#     return roman
-
-
-def to_roman2(n):   
-    primer_digito = int(str(n)[0])
-    orden = n / primer_digito
-
-    if primer_digito <= 3:
-        result = primer_digito * valors[orden]
-    elif primer_digito == 4:
-        result = valors[orden] + valors[5 * orden]
-    elif primer_digito < 9:
-        result = valors[5 * orden] + (primer_digito - 5) * valors[orden]
-    elif primer_digito == 9:
-        result = valors[orden] + valors[10 * orden]
-
-    return result
-
-
-print(to_roman2(800))
