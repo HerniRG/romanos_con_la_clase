@@ -14,8 +14,9 @@ def digito_orden(n: int):
     digito_orden(4321)
     (4, 1000)
     """
-    primer_digito = int(str(n)[0])
+    
     orden = 10 ** (len(str(n)) - 1)
+    primer_digito = n // orden
     return (primer_digito, orden)
 
 def to_roman2(n):   

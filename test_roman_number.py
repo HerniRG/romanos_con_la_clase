@@ -59,7 +59,7 @@ def test_romanos_10_al_90():
 
 def test_dividir_en_digitos():
     assert dividir_en_digitos(34) == [30, 4]
-    
+    assert dividir_en_digitos(10012) == [10000, 0, 0, 10, 2]
     assert dividir_en_digitos(2024) == [2000, 0, 20, 4]
     assert dividir_en_digitos(100) == [100, 0, 0]
 
