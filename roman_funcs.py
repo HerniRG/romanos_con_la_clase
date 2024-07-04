@@ -143,4 +143,4 @@ def arabigo_a_romano(n: int):
 
     return romano_miles
 
-print(arabigo_a_romano(60220000000000002722976))
+print(arabigo_a_romano(int(6.022e23)))
