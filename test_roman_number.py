@@ -77,6 +77,7 @@ def test_to_roman2():
 
 
 def test_romano_mayor_de_3999():
+    assert arabigo_a_romano(26) == "XXVI"
     assert arabigo_a_romano(4000) == "IV•"
     assert arabigo_a_romano(4127) == "IV•CXXVII"
     assert arabigo_a_romano(5000) == "V•"

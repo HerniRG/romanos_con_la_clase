@@ -136,8 +136,11 @@ def arabigo_a_romano(n: int):
     
     for indice, miles in enumerate(lista):
         lista_miles = dividir_en_digitos(miles) # cada miles devuelve [300, 20, 1]
-        romano_miles = digitos_a_roman(lista_miles) + (indice * "•") + romano_miles # los miles los pasa a romanos, añade "•" segun el indice y añade lo que tenía ya romano_miles
+        romano = digitos_a_roman(lista_miles)
+        
+        if romano != "":
+            romano_miles = romano + (indice * "•") + romano_miles # los miles los pasa a romanos, añade "•" segun el indice y añade lo que tenía ya romano
 
     return romano_miles
 
-print(arabigo_a_romano(4127))
+print(arabigo_a_romano(60220000000000002722976))
