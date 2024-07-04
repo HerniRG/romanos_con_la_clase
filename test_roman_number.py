@@ -77,7 +77,24 @@ def test_to_roman2():
 
 
 def test_romano_mayor_de_3999():
+    assert arabigo_a_romano(4000) == "IV•"
     assert arabigo_a_romano(4127) == "IV•CXXVII"
+    assert arabigo_a_romano(5000) == "V•"
+    assert arabigo_a_romano(5999) == "V•CMXCIX"
+    assert arabigo_a_romano(6000) == "VI•"
+    assert arabigo_a_romano(10000) == "X•"
+    assert arabigo_a_romano(11000) == "XI•"
+    assert arabigo_a_romano(15000) == "XV•"
+    assert arabigo_a_romano(19999) == "XIX•CMXCIX"
+    assert arabigo_a_romano(20000) == "XX•"
+    assert arabigo_a_romano(39999) == "XXXIX•CMXCIX"
+    assert arabigo_a_romano(40000) == "XL•"
+    assert arabigo_a_romano(50000) == "L•"
+    assert arabigo_a_romano(99999) == "XCIX•CMXCIX"
+    assert arabigo_a_romano(100000) == "C•"
+    assert arabigo_a_romano(400000) == "CD•"
+    assert arabigo_a_romano(500000) == "D•"
+    assert arabigo_a_romano(900000) == "CM•"
 
 def test_divide_en_miles():
     assert divide_en_miles(4127) == [127, 4]

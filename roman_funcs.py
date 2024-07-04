@@ -67,8 +67,7 @@ def divide_en_miles(n: int):
         lista.append(modulo)
         lista.append(paluego)
     
-    return lista
-    
+    return lista  
 
 def dividir_en_digitos(n: int):
     """
@@ -129,15 +128,15 @@ def arabigo_a_romano(n: int):
     str: Representación romana del número.
     
     Ejemplo:
-    arabigo_a_romano(4321)
-    'MV•CCCXXI'
+    arabigo_a_romano(4127)
+    'IV•CXXVII'
     """
-    lista = divide_en_miles(n)
-    romano_miles = ""
+    lista = divide_en_miles(n) # [4, 123, 135, 465]
+    romano_miles = "" # str que devolveremos al final en romano
     
     for indice, miles in enumerate(lista):
-        lista_miles = dividir_en_digitos(miles)
-        romano_miles = digitos_a_roman(lista_miles) + (indice * "•") + romano_miles
+        lista_miles = dividir_en_digitos(miles) # cada miles devuelve [300, 20, 1]
+        romano_miles = digitos_a_roman(lista_miles) + (indice * "•") + romano_miles # los miles los pasa a romanos, añade "•" segun el indice y añade lo que tenía ya romano_miles
 
     return romano_miles
 
